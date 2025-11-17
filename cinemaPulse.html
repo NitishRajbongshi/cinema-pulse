@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Pulse - Your Source for Movie News</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e94560;
+        }
+
+        .logo p {
+            font-size: 1rem;
+            color: #ddd;
+            margin-top: 0.3rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #e94560;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23333" width="1200" height="400"/><path fill="%23444" d="M0 200 L100 180 L200 220 L300 190 L400 210 L500 180 L600 200 L700 190 L800 210 L900 190 L1000 200 L1100 190 L1200 200 L1200 400 L0 400 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e94560;
+            color: #fff;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d63651;
+        }
+
+        .content {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #1a1a2e;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .news-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-content h3 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .news-meta {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .about {
+            background: #fff;
+            padding: 3rem 0;
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #1a1a2e;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #e94560;
+        }
+
+        footer {
+            background: #1a1a2e;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🎬 Cinema Pulse</h1>
+                    <p>Your Source for Movie News & Updates</p>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#news">Latest News</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Stay Updated with the Latest Movie News</h2>
+            <p>Breaking news, reviews, trailers, and everything cinema</p>
+            <a href="#news" class="btn">Explore Latest Updates</a>
+        </div>
+    </section>
+
+    <section class="content" id="news">
+        <div class="container">
+            <h2 class="section-title">Latest Movie News</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">🎥</div>
+                    <div class="news-content">
+                        <h3>Breaking Movie News</h3>
+                        <p>Stay tuned for the latest updates from Hollywood and beyond. We bring you breaking news as it happens.</p>
+                        <div class="news-meta">Posted today</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">🍿</div>
+                    <div class="news-content">
+                        <h3>Box Office Updates</h3>
+                        <p>Get the latest box office numbers and analysis of what's trending in theaters worldwide.</p>
+                        <div class="news-meta">Posted today</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">⭐</div>
+                    <div class="news-content">
+                        <h3>Movie Reviews</h3>
+                        <p>Read our honest reviews and ratings for the newest releases hitting the big screen.</p>
+                        <div class="news-meta">Posted today</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">🎞️</div>
+                    <div class="news-content">
+                        <h3>Upcoming Releases</h3>
+                        <p>Get the inside scoop on upcoming movies, trailers, and release dates you don't want to miss.</p>
+                        <div class="news-meta">Posted today</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">🏆</div>
+                    <div class="news-content">
+                        <h3>Awards Season</h3>
+                        <p>Follow the latest news from major film festivals and awards ceremonies around the world.</p>
+                        <div class="news-meta">Posted today</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-image">🎬</div>
+                    <div class="news-content">
+                        <h3>Behind the Scenes</h3>
+                        <p>Exclusive behind-the-scenes content, interviews, and insights from your favorite filmmakers.</p>
+                        <div class="news-meta">Posted today</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Cinema Pulse</h2>
+                <p>Cinema Pulse is your premier destination for all things movies. We're passionate about cinema and dedicated to bringing you the latest news, reviews, and updates from the world of film.</p>
+                <p>From Hollywood blockbusters to independent gems, we cover it all. Join our community of movie enthusiasts and never miss a beat in the ever-evolving world of cinema.</p>
+                
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank">📘 Follow on Facebook</a>
+                    <a href="https://twitter.com" target="_blank">🐦 Follow on Twitter</a>
+                    <a href="https://instagram.com" target="_blank">📷 Follow on Instagram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2025 Cinema Pulse. All rights reserved.</p>
+            <p>Contact: info@cinemapulse.com</p>
+        </div>
+    </footer>
+</body>
+</html>
